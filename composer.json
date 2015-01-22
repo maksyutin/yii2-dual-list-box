@@ -15,6 +15,10 @@
 			"homepage": "http://www.geodan.nl"
 		}
 	],
+	"support": {
+		"issues": "https://github.com/maksyutin/yii2-dual-list-box/issues?state=open",
+		"source": "https://github.com/maksyutin/yii2-dual-list-box"
+	},
 	"require": {
 		"yiisoft/yii2": "*"
 	},
