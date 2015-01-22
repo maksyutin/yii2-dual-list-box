@@ -7,7 +7,11 @@
 	"authors": [
 		{
 			"name": "Maksyutin Dmitriy",
+<<<<<<< HEAD
 			"email": "maksyutin@yandex.ru"
+=======
+			"email": "maksyutin@yandex.ru",
+>>>>>>> c0bb5a6a79fb8560bc74ea69ee39af96fa637483
 			"homepage": "http://maksyutin.ru"
 		},
 		{
@@ -15,11 +19,24 @@
 			"homepage": "http://www.geodan.nl"
 		}
 	],
+<<<<<<< HEAD
+=======
+	"support": {
+		"issues": "https://github.com/maksyutin/yii2-dual-list-box/issues?state=open",
+		"source": "https://github.com/maksyutin/yii2-dual-list-box"
+	},
+>>>>>>> c0bb5a6a79fb8560bc74ea69ee39af96fa637483
 	"require": {
 		"yiisoft/yii2": "*"
 	},
 	"autoload": {
+<<<<<<< HEAD
 	"psr-4": {
 		"maksyutin\\yii2-dual-list-box\\": ""
+=======
+		"psr-4": {
+			"maksyutin\\yii2-dual-list-box\\": ""
+		}
+>>>>>>> c0bb5a6a79fb8560bc74ea69ee39af96fa637483
 	}
 }
