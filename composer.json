@@ -19,7 +19,8 @@
 		"yiisoft/yii2": "*"
 	},
 	"autoload": {
-	"psr-4": {
-		"maksyutin\\yii2-dual-list-box\\": ""
+		"psr-4": {
+			"maksyutin\\yii2-dual-list-box\\": ""
+		}
 	}
 }
