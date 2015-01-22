@@ -35,7 +35,8 @@ Once the extension is installed, simply use it in your code:
 
 ### View ###
 ```php
-echo maksyutin\widgets\AutoloadExample::widget([
+
+echo maksyutin\duallistbox\Widget::widget([
     'model' => $model,
     'attribute' => 'list_regions',
     'title' => 'города',
