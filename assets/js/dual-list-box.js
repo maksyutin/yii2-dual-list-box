@@ -4,6 +4,7 @@
  *
  * Copyright (c) 2014 Geodan B.V.
  * Created by: Alex van den Hoogen
+ * Update for Yii2: Makyutin Dmitriy http://www.maksyutin.ru
  *
  * Usage:
  *   Create a <select> and apply this script to that select via jQuery like so:
