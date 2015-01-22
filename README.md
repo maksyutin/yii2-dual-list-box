@@ -62,6 +62,8 @@ data_value - name attribute for value
 
 ### Controller SAVE ###
 
+```php
 $model = new ModelForm;
 $model->load(Yii::$app->request->post());
 $region_model = Json::decode($model->list_regions);
+```
