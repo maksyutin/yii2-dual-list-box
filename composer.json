@@ -1,0 +1,25 @@
+{
+	"name": "maksyutin/yii2-dual-list-box",
+	"description": "Dual list box Widget for Yii 2",
+	"type": "yii2-extension",
+	"keywords": ["yii2", "yii 2", "dual-list-box", "duallistbox", "dual listview", "widget"],
+	"license": "proprietary",
+	"authors": [
+		{
+			"name": "Maksyutin Dmitriy",
+			"email": "maksyutin@yandex.ru"
+			"homepage": "http://maksyutin.ru"
+		},
+		{
+			"name": "Geodan B.V.",
+			"homepage": "http://www.geodan.nl"
+		}
+	],
+	"require": {
+		"yiisoft/yii2": "*"
+	},
+	"autoload": {
+	"psr-4": {
+		"maksyutin\\yii2-dual-list-box\\": ""
+	}
+}

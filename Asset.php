@@ -1,6 +1,6 @@
 <?php
 
-namespace maksyutin\widgets;
+namespace maksyutin\duallistbox;
 
 use yii\web\AssetBundle;
 
