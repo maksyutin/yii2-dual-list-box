@@ -9,7 +9,7 @@ use yii\widgets\InputWidget;
 /**
  * This is just an example.
  */
-class DualListBox extends InputWidget
+class Widget extends InputWidget
 {
 
     public $nametitle;
