@@ -15,12 +15,13 @@
 			"homepage": "http://www.geodan.nl"
 		}
 	],
+	"minimum-stability": "dev",
 	"support": {
 		"issues": "https://github.com/maksyutin/yii2-dual-list-box/issues?state=open",
 		"source": "https://github.com/maksyutin/yii2-dual-list-box"
 	},
 	"require": {
-		"yiisoft/yii2": "*"
+		"yiisoft/yii2": "~2.0"
 	},
 	"autoload": {
 		"psr-4": {
