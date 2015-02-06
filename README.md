@@ -14,13 +14,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require --prefer-dist maksyutin/yii2-dual-list-box "*"
+php composer.phar require --prefer-dist maksyutin/yii2-dual-list-box "dev-master"
 ```
 
 or add
 
 ```
-"maksyutin/yii2-dual-list-box": "*"
+"maksyutin/yii2-dual-list-box": "dev-master"
 ```
 
 to the require section of your `composer.json` file.
