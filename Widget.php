@@ -73,7 +73,7 @@ class Widget extends InputWidget
         $lng_opt->available = 'Available';
         $lng_opt->selected = 'Selected';
 
-        foreach($lng_opt as $value=>$key) {
+        foreach($lng_opt as $key=>$value) {
             $lng_opt->$key = isset($this->lngOptions[$key]) ? $this->lngOptions[$key] : $value;
         }
 
