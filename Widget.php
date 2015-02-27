@@ -14,6 +14,7 @@ class Widget extends InputWidget
 
     public $nametitle;
     public $title;
+    public $lngOptions;
     public $attributes;
     public $data;
     public $data_id;
@@ -64,13 +65,28 @@ class Widget extends InputWidget
         }
         $ret .= '</select>';
 
+        $lng_opt = new Json();
+        $lng_opt->warning_info = 'Are you sure you want to move this many items?
+        Doing so can cause your browser to become unresponsive.';
+        $lng_opt->search_placeholder = 'Filter';
+        $lng_opt->showing = '- showing';
+        $lng_opt->available = 'Available';
+        $lng_opt->selected = 'Selected';
+
+        foreach($lng_opt as $value=>$key) {
+            $lng_opt->$key = isset($this->lngOptions[$key]) ? $this->lngOptions[$key] : $value;
+        }
+
+        $options = 'lngOptions: '. json_encode($lng_opt);
+
         $js = <<<SCRIPT
 
             $('#$inputId').DualListBox({
                 json: false,
                 name: '$idModel',
                 id: $inputId,
-                title: '$this->nametitle'
+                title: '$this->nametitle',
+                $options
             });
 
             $ret_sel

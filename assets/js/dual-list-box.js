@@ -37,7 +37,13 @@
                 textLength: 45,                 // Maximum text length that is displayed in the select.
                 moveAllBtn: true,               // Whether the append all button is available.
                 maxAllBtn:  1000,                // Maximum size of list in which the all button works without warning. See below.
-                warning:    'Вы уверены, что хотите выбрать такое количество элементов? Возможно Ваш браузер может перестанет отвечать на запросы..'
+                lngOptions: {
+                    warning_info: 'Are you sure you want to move this many items? Doing so can cause your browser to become unresponsive.',
+                    search_placeholder: 'Filter',
+                    showing: '- showing',
+                    available: 'Available',
+                    selected: 'Selected'
+                }
             };
 
             var htmlOptions = {
@@ -123,7 +129,7 @@
                     $(this).prop('disabled', true);
                     break;
                 case 'atr': /* All to the right. */
-                    if (unselected.find('option').length >= options.maxAllBtn && confirm(options.warning) ||
+                    if (unselected.find('option').length >= options.maxAllBtn && confirm(options.lngOptions.warning_info) ||
                         unselected.find('option').length < options.maxAllBtn) {
                         unselected.find('option').each(function () {
                             if ($(this).isVisible()) {
@@ -137,7 +143,7 @@
                     $(this).prop('disabled', true);
                     break;
                 case 'atl': /* All to the left. */
-                    if (selected.find('option').length >= options.maxAllBtn && confirm(options.warning) ||
+                    if (selected.find('option').length >= options.maxAllBtn && confirm(options.lngOptions.warning_info) ||
                         selected.find('option').length < options.maxAllBtn) {
                         selected.find('option').each(function () {
                             if ($(this).isVisible()) {
@@ -207,15 +213,15 @@
 
         $(options.parentElement).addClass('row').append(
                 (options.horizontal == false ? '   <div class="col-md-5">' : '   <div class="col-md-6">') +
-                '       <h4><span class="unselected-title"></span> <small>- показано <span class="unselected-count"></span></small></h4>' +
-                '       <input class="filter form-control filter-unselected" type="text" placeholder="Поиск" style="margin-bottom: 5px;">' +
+                '       <h4><span class="unselected-title"></span> <small>' + options.lngOptions.showing + ' ' + '<span class="unselected-count"></span></small></h4>' +
+                '       <input class="filter form-control filter-unselected" type="text" placeholder="' + options.lngOptions.search_placeholder + '" style="margin-bottom: 5px;">' +
                 (options.horizontal == false ? '' : createHorizontalButtons(1, options.moveAllBtn)) +
                 '       <select class="unselected" style="height: 200px; width: 100%;" multiple></select>' +
                 '   </div>' +
                 (options.horizontal == false ? createVerticalButtons(options.moveAllBtn) : '') +
                 (options.horizontal == false ? '   <div class="col-md-5">' : '   <div class="col-md-6">') +
-                '       <h4><span class="selected-title"></span> <small>- показано <span class="selected-count"></span></small></h4>' +
-                '       <input class="filter form-control filter-selected" type="text" placeholder="Поиск" style="margin-bottom: 5px;">' +
+                '       <h4><span class="selected-title"></span> <small>' + options.lngOptions.showing + ' ' + '<span class="selected-count"></span></small></h4>' +
+                '       <input class="filter form-control filter-selected" type="text" placeholder="' + options.lngOptions.search_placeholder + '" style="margin-bottom: 5px;">' +
                 (options.horizontal == false ? '' : createHorizontalButtons(2, options.moveAllBtn)) +
                 '       <select class="selected" style="height: 200px; width: 100%;" multiple></select>' +
                 '   </div>');
@@ -224,8 +230,8 @@
         var selected = $(options.parentElement + ' .selected');
 
         $(options.parentElement + ' .selected').prop('name', $(options.element).prop('name'));
-        $(options.parentElement + ' .unselected-title').text('Имеющиеся ' + options.title);
-        $(options.parentElement + ' .selected-title').text('Выбранные ' + options.title);
+        $(options.parentElement + ' .unselected-title').text(options.lngOptions.available + ' ' + options.title);
+        $(options.parentElement + ' .selected-title').text(options.lngOptions.selected + ' ' + options.title);
 
     }
 
