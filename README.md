@@ -42,7 +42,15 @@ echo maksyutin\duallistbox\Widget::widget([
     'title' => 'города',
     'data' => $region,
     'data_id'=> 'id',
-    'data_value'=> 'name'
+    'data_value'=> 'name',
+    'lngOptions' => [
+        'warning_info' => 'Вы уверены, что хотите выбрать такое количество элементов?
+                           Возможно Ваш браузер может перестанет отвечать на запросы..',
+        'search_placeholder' => 'Фильтр',
+        'showing' => ' - показано',
+        'available' => 'Имеющиеся',
+        'selected' => 'Выбранные'
+    ]
   ]);
 ```
 model - model for form
