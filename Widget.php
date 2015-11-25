@@ -35,13 +35,12 @@ class Widget extends InputWidget
     public function run()
     {
         $view = $this->getView();
-        $model = $this->model;
         $inputId = $this->attribute;
-        $selected = \yii\helpers\Json::decode($this->model->$inputId, JSON_UNESCAPED_UNICODE);
+        $selected = Json::decode($this->model->$inputId, JSON_UNESCAPED_UNICODE);
         $selected = ($selected == null) ? [] : $selected;
         $json_sel = Json::encode($selected);
 
-        $idModel = strtolower($model->formName());
+        $idModel = strtolower($this->model->formName());
 
         $this->attributes = $this->model->attributes();
 
@@ -52,9 +51,10 @@ class Widget extends InputWidget
         $ret_sel = '';
         $ret = '<select style="display: none;" multiple = "multiple">';
         $cnt = 0;
+	    $flipped_selected = array_flip($selected);
         foreach ($data as $key => $value) {
 
-            if (!in_array($value->{$this->data_id}, $selected)) {
+            if ( !isset($flipped_selected[$value->{$this->data_id}]) ) {
                 $ret .= '<option value="' . $value->{$this->data_id} . '">' . $value->{$this->data_value} . '</option>' . "\n";
         } else {
                 $cnt++;
