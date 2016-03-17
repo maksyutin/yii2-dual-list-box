@@ -55,11 +55,11 @@ class Widget extends InputWidget
         foreach ($data as $key => $value) {
 
             if ( !isset($flipped_selected[$value->{$this->data_id}]) ) {
-                $ret .= '<option value="' . addslashes($value->{$this->data_id}) . '">' . $value->{$this->data_value} . '</option>' . "\n";
+                $ret .= '<option value="' . htmlspecialchars($value->{$this->data_id}) . '">' . htmlspecialchars($value->{$this->data_value}) . '</option>' . "\n";
         } else {
                 $cnt++;
                 $ret_sel .= '$("#dlb-'.$this->attribute.' .selected").
-                append("<option value=' . addslashes($value->{$this->data_id}) . '>' . $value->{$this->data_value} . '</option>");';
+                append("<option value=' . htmlspecialchars($value->{$this->data_id}) . '>' . htmlspecialchars($value->{$this->data_value}) . '</option>");';
             }
         }
         $ret .= '</select>';
