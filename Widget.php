@@ -29,13 +29,16 @@ class Widget extends InputWidget
 
         $this->nametitle = isset($this->nametitle) ? $this->nametitle : '';
         $this->registerAssets();
+
         echo Html::activeTextInput($this->model, $this->attribute, ['class' => 'hidden', 'value' => $this->value]);
     }
 
     public function run()
     {
         $view = $this->getView();
+
         $inputId = $this->attribute;
+
         $selected = Json::decode($this->model->$inputId, JSON_UNESCAPED_UNICODE);
         $selected = ($selected == null) ? [] : $selected;
         $json_sel = Json::encode($selected);
@@ -46,23 +49,28 @@ class Widget extends InputWidget
 
         $data = ($this->data) ? $this->data->all() : [];
 
-        echo '<div id="'.$inputId.'" >';
-
         $ret_sel = '';
         $ret = '<select style="display: none;" multiple = "multiple">';
         $cnt = 0;
 	    $flipped_selected = array_flip($selected);
         foreach ($data as $key => $value) {
 
-            if ( !isset($flipped_selected[$value->{$this->data_id}]) ) {
-                $ret .= '<option value="' . $value->{$this->data_id} . '">' . $value->{$this->data_value} . '</option>' . "\n";
-        } else {
+            // Check if data item is selected
+            if ( isset($flipped_selected[$value->{$this->data_id}]) ) {
+                // Add to selected array
+                $ret_sel .= '<option value="' . htmlspecialchars($value->{$this->data_id}) . '">' . htmlspecialchars($value->{$this->data_value}) . '</option>';
                 $cnt++;
-                $ret_sel .= '$("#dlb-'.$this->attribute.' .selected").
-                append("<option value=' . $value->{$this->data_id} . '>' . $value->{$this->data_value} . '</option>");';
+            } else {
+                // Add to options array
+                $ret .= '<option value="' . htmlspecialchars($value->{$this->data_id}) . '">' . htmlspecialchars($value->{$this->data_value}) . '</option>';
             }
         }
         $ret .= '</select>';
+
+        // If items were pre-selected add them to the selected select list
+        if ($ret_sel) {
+            $ret_sel = '$("#dlb-'.strtolower($this->attribute).' .selected").append(\''.$ret_sel.'\');';
+        }
 
         $lng_opt = new Json();
         $lng_opt->warning_info = 'Are you sure you want to move this many items?
@@ -78,19 +86,26 @@ class Widget extends InputWidget
 
         $options = 'lngOptions: '. json_encode($lng_opt);
 
+        // Setup
+
+        // Create the JS code to transform
+        $formInputID = Html::getInputId($this->model, $this->attribute);
+
+        $inputIdLower = strtolower($inputId);
+
         $js = <<<SCRIPT
 
             $('#$inputId').DualListBox({
                 json: false,
                 name: '$idModel',
-                id: $inputId,
+                id: '$inputIdLower',
                 title: '$this->nametitle',
                 $options
             });
 
             $ret_sel
 
-            $("#$idModel-$inputId").val('$json_sel');
+            $("#$formInputID").val('$json_sel');
 
             $('#dlb-$inputId .selected-count').text('$cnt');
 
@@ -98,7 +113,7 @@ SCRIPT;
 
         $view->registerJs($js);
 
-        return $ret.'</div>';
+        return '<div id="'.$inputId.'" >'.$ret.'</div>';
     }
 
     /**
