@@ -123,12 +123,5 @@ SCRIPT;
     {
         $view = $this->getView();
         Asset::register($view);
-//
-//        $attr = $this->attribute;
-//        $js = <<<SCRIPT
-//
-//SCRIPT;
-//
-//        $view->registerJs($js);
     }
 }
